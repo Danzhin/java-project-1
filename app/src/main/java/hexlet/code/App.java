@@ -1,32 +1,41 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+
 import java.util.Scanner;
 
-import static hexlet.code.Cli.greeting;
-import static hexlet.code.Even.isEven;
+import static hexlet.code.Engine.greeting;
+import static hexlet.code.games.Even.play;
+import static hexlet.code.games.Calc.play;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter the game number and press Enter.\n1 - Greet\n2 - Even\n0 - Exit");
+        System.out.println("Please enter the game number and press Enter.");
+        System.out.println("1 - Greet");
+        System.out.println("2 - Even");
+        System.out.println("3 - Calc");
+        System.out.println("0 - Exit");
         System.out.print("Your choice: ");
-        String number = scanner.next();
+        int action = Integer.parseInt(scanner.next());
         System.out.println();
 
-        int action = Integer.parseInt(number);
-
+        String name;
         switch (action) {
-            case 0:
-                break;
             case 1:
-                greeting(scanner);
+                name = greeting(scanner);
                 break;
             case 2:
-                isEven(scanner);
+                Even.play(scanner);
+                break;
+            case 3:
+                Calc.play(scanner);
+                break;
+            case 0:
                 break;
         }
-
         scanner.close();
     }
 }
