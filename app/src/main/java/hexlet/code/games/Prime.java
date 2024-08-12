@@ -1,12 +1,17 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
 import hexlet.code.Engine;
+import java.util.Scanner;
 
-public class Even {
+public class Prime {
 
     public static String getCorrectAnswer(int number) {
-        return number % 2 == 0 ? "yes" : "no";
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return "no"; // Число делится на другое число, значит оно не простое
+            }
+        }
+        return "yes";
     }
 
     public static void play(Scanner scanner) {
@@ -34,4 +39,5 @@ public class Even {
         }
         System.out.println("Congratulations, " + userName + "!");
     }
+
 }

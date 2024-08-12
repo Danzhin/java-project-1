@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import java.util.Scanner;
 
-import static hexlet.code.Engine.*;
+import hexlet.code.Engine;
 
 public class Gcd {
 
@@ -17,7 +17,7 @@ public class Gcd {
     }
 
     public static void play(Scanner scanner) {
-        String userName = greeting(scanner);
+        String userName = Engine.greeting(scanner);
         System.out.println("Find the greatest common divisor of given numbers.");
 
         int number1;
@@ -35,7 +35,9 @@ public class Gcd {
             userAnswer = Integer.parseInt(scanner.next());
             correctAnswer = getCorrectAnswer(number1, number2);
 
-            if (compareAnswers(userAnswer, correctAnswer, userName)) {return;}
+            if (Engine.compareAnswers(userAnswer, correctAnswer, userName)) {
+                return;
+            }
 
             System.out.println("Correct!");
         }

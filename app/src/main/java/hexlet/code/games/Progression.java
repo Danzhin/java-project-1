@@ -1,8 +1,7 @@
 package hexlet.code.games;
 
 import java.util.Scanner;
-
-import static hexlet.code.Engine.*;
+import hexlet.code.Engine;
 
 public class Progression {
 
@@ -19,8 +18,7 @@ public class Progression {
         for (int number : progression) {
             if (number == missedNumber) {
                 System.out.print(".. ");
-            }
-            else {
+            } else {
                 System.out.print(number + " ");
             }
         }
@@ -28,7 +26,7 @@ public class Progression {
     }
 
     public static void play(Scanner scanner) {
-        String userName = greeting(scanner);
+        String userName = Engine.greeting(scanner);
         System.out.println("What number is missing in the progression?");
 
         int[]  progression = new int[10];
@@ -45,7 +43,9 @@ public class Progression {
 
             userAnswer = Integer.parseInt(scanner.next());
 
-            if (compareAnswers(userAnswer, correctAnswer, userName)) {return;}
+            if (Engine.compareAnswers(userAnswer, correctAnswer, userName)) {
+                return;
+            }
 
             System.out.println("Correct!");
 

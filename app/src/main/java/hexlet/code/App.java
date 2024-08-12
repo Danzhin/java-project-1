@@ -1,17 +1,14 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.Gcd;
-import hexlet.code.games.Progression;
-
 import java.util.Scanner;
 
 import static hexlet.code.Engine.greeting;
-import static hexlet.code.games.Even.play;
-import static hexlet.code.games.Calc.play;
-import static hexlet.code.games.Gcd.play;
-import static hexlet.code.games.Progression.play;
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
+
 
 public class App {
     public static void main(String[] args) {
@@ -23,15 +20,15 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
         int action = Integer.parseInt(scanner.next());
         System.out.println();
 
-        String name;
         switch (action) {
             case 1:
-                name = greeting(scanner);
+                String name = greeting(scanner);
                 break;
             case 2:
                 Even.play(scanner);
@@ -45,7 +42,10 @@ public class App {
             case 5:
                 Progression.play(scanner);
                 break;
-            case 0:
+            case 6:
+                Prime.play(scanner);
+                break;
+            default:
                 break;
         }
         scanner.close();

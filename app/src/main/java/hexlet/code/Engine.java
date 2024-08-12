@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Engine {
 
     public static String greeting(Scanner scanner) {
-       System.out.println("Welcome to the Brain Games!");
-       System.out.print("May I have your name? ");
-       String userName = scanner.next();
-       System.out.println("Hello, " + userName + "!");
-       return userName;
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
+        return userName;
     }
 
     public static boolean compareAnswers(int userAnswer, int correctAnswer, String userName) {

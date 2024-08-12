@@ -1,8 +1,7 @@
 package hexlet.code.games;
 
 import java.util.Scanner;
-
-import static hexlet.code.Engine.*;
+import hexlet.code.Engine;
 
 public class Calc {
 
@@ -21,7 +20,7 @@ public class Calc {
     }
 
     public static void play(Scanner scanner) {
-        String userName = greeting(scanner);
+        String userName = Engine.greeting(scanner);
         System.out.println("What is the result of the expression?");
 
         int number1;
@@ -40,7 +39,9 @@ public class Calc {
             userAnswer = Integer.parseInt(scanner.next());
             correctAnswer = getCorrectAnswer(number1, number2, operations[round]);
 
-            if (compareAnswers(userAnswer, correctAnswer, userName)) {return;}
+            if (Engine.compareAnswers(userAnswer, correctAnswer, userName)) {
+                return;
+            }
 
             System.out.println("Correct!");
         }
