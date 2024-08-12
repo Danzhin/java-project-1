@@ -12,28 +12,31 @@ public class Engine {
        return userName;
     }
 
-    public static boolean compareAnswers(int userAnswer, int correctAnswer) {
-        return userAnswer == correctAnswer;
-    }
 
-    public static boolean compareAnswers(String userAnswer, String correctAnswer) {
-        return userAnswer.equals(correctAnswer);
-    }
 
-    public static void errorMessage(int userAnswer, int correctAnswer) {
-        System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
-    }
-
-    public static void errorMessage(String userAnswer, String correctAnswer) {
-        System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
-    }
 
     public static void printVictoryMessage(String userName) {
         System.out.println("Congratulations, " + userName + "!");
     }
 
-    public static void printLossMessage(String userName) {
-        System.out.println("Let's try again, " + userName + "!");
+
+
+    public static boolean compareAnswers(int userAnswer, int correctAnswer, String userName) {
+        boolean result = userAnswer == correctAnswer;
+        if (!result) {
+            System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
+            System.out.println("Let's try again, " + userName + "!");
+        }
+        return result;
+    }
+
+    public static boolean compareAnswers(String userAnswer, String correctAnswer, String userName) {
+        boolean result = userAnswer.equals(correctAnswer);
+        if (!result) {
+            System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
+            System.out.println("Let's try again, " + userName + "!");
+        }
+        return result;
     }
 
 }
