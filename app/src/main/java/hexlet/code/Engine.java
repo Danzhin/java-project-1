@@ -12,31 +12,22 @@ public class Engine {
        return userName;
     }
 
-
-
-
-    public static void printVictoryMessage(String userName) {
-        System.out.println("Congratulations, " + userName + "!");
-    }
-
-
-
     public static boolean compareAnswers(int userAnswer, int correctAnswer, String userName) {
-        boolean result = userAnswer == correctAnswer;
-        if (!result) {
+        boolean differ = userAnswer != correctAnswer;
+        if (differ) {
             System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
             System.out.println("Let's try again, " + userName + "!");
         }
-        return result;
+        return differ;
     }
 
     public static boolean compareAnswers(String userAnswer, String correctAnswer, String userName) {
-        boolean result = userAnswer.equals(correctAnswer);
-        if (!result) {
+        boolean differ = !userAnswer.equals(correctAnswer);
+        if (differ) {
             System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
             System.out.println("Let's try again, " + userName + "!");
         }
-        return result;
+        return differ;
     }
 
 }

@@ -40,10 +40,10 @@ public class Calc {
             userAnswer = Integer.parseInt(scanner.next());
             correctAnswer = getCorrectAnswer(number1, number2, operations[round]);
 
-            if (!compareAnswers(userAnswer, correctAnswer, userName)) {return;}
+            if (compareAnswers(userAnswer, correctAnswer, userName)) {return;}
 
             System.out.println("Correct!");
         }
-        printVictoryMessage(userName);
+        System.out.println("Congratulations, " + userName + "!");
     }
 }

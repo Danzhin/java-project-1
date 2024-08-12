@@ -12,6 +12,7 @@ public class Gcd {
             number2 = number1 % number2;
             number1 = temp;
         }
+
         return number1;
     }
 
@@ -35,9 +36,9 @@ public class Gcd {
             correctAnswer = getCorrectAnswer(number1, number2);
 
             if (compareAnswers(userAnswer, correctAnswer, userName)) {return;}
-            
+
             System.out.println("Correct!");
         }
-        printVictoryMessage(userName);
+        System.out.println("Congratulations, " + userName + "!");
     }
 }

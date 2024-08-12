@@ -27,11 +27,10 @@ public class Even {
             userAnswer = scanner.next();
             correctAnswer = getCorrectAnswer(number);
 
-            if (!compareAnswers(userAnswer, correctAnswer, userName)) {return;}
+            if (compareAnswers(userAnswer, correctAnswer, userName)) {return;}
 
             System.out.println("Correct!");
         }
-        printVictoryMessage(userName);
+        System.out.println("Congratulations, " + userName + "!");
     }
-
 }
