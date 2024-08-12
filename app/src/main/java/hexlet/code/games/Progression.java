@@ -15,6 +15,7 @@ public class Progression {
     }
 
     public static void printQuestion(int[] progression, int missedNumber) {
+        System.out.print("Question: ");
         for (int number : progression) {
             if (number == missedNumber) {
                 System.out.print(".. ");
