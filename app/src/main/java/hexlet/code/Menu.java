@@ -27,15 +27,23 @@ public class Menu {
         String action = scanner.next();
         System.out.println();
 
-        Game game = switch (action) {
-            case "2" -> new Even(scanner);
-            case "3" -> new Calc(scanner);
-            case "4" -> new GCD(scanner);
-            case "5" -> new Progression(scanner);
-            default -> new Prime(scanner);
-        };
-
-        game.play();
+        if (action.equals("1")) {
+            System.out.println("Welcome to the Brain Games!");
+            System.out.print("May I have your name? ");
+            System.out.println("Hello, " + scanner.next() + "!");
+        } else if (action.equals("0")) {
+            return;
+        }
+        else {
+            Game game = switch (action) {
+                case "2" -> new Even(scanner);
+                case "3" -> new Calc(scanner);
+                case "4" -> new GCD(scanner);
+                case "5" -> new Progression(scanner);
+                default -> new Prime(scanner);
+            };
+            game.play();
+        }
     }
 
 
