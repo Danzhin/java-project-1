@@ -20,6 +20,16 @@ public class Menu {
         System.out.println("0 - Exit");
     }
 
+    public static Game selectGame(String gameNumber, Scanner scanner) {
+        return switch (gameNumber) {
+            case "2" -> new Even(scanner);
+            case "3" -> new Calc(scanner);
+            case "4" -> new GCD(scanner);
+            case "5" -> new Progression(scanner);
+            default -> new Prime(scanner);
+        };
+    }
+
     public static void selectAction() {
         Scanner scanner = new Scanner(System.in);
 
@@ -33,15 +43,8 @@ public class Menu {
             System.out.println("Hello, " + scanner.next() + "!");
         } else if (action.equals("0")) {
             return;
-        }
-        else {
-            Game game = switch (action) {
-                case "2" -> new Even(scanner);
-                case "3" -> new Calc(scanner);
-                case "4" -> new GCD(scanner);
-                case "5" -> new Progression(scanner);
-                default -> new Prime(scanner);
-            };
+        } else {
+            Game game = selectGame(action, scanner);
             game.play();
         }
     }
