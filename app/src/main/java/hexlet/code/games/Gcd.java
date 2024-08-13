@@ -25,6 +25,8 @@ public class GCD extends Game {
             number2 = number1 % number2;
             number1 = temp;
         }
-        correctAnswer = Integer.toString(number1);;
+        correctAnswer = Integer.toString(number1);
     }
+
 }
+

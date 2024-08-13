@@ -26,5 +26,4 @@ public class Prime extends Game {
             }
         }
     }
-
 }

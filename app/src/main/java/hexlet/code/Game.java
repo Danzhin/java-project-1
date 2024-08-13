@@ -22,7 +22,7 @@ public abstract class Game {
         System.out.println("Hello, " + userName + "!");
     }
 
-    public void printRules(String rules) {
+    public void printRules() {
         System.out.println(rules);
     }
 
@@ -41,12 +41,12 @@ public abstract class Game {
 
     public void play() {
         greeting();
-        printRules(rules);
+        printRules();
         for (int i = 0; i < countRound; i++) {
             askQuestion();
             getAnswer();
             getCorrectAnswer();
-            if(!compareAnswers()) {
+            if (!compareAnswers()) {
                 System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
                 System.out.println("Let's try again, " + userName + "!");
                 return;
