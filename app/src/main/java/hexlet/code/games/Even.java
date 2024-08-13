@@ -1,37 +1,24 @@
 package hexlet.code.games;
 
+import hexlet.code.Game;
 import java.util.Scanner;
-import hexlet.code.Engine;
 
-public class Even {
+public class Even extends Game {
 
-    public static String getCorrectAnswer(int number) {
-        return number % 2 == 0 ? "yes" : "no";
+    private int number;
+
+    public Even(Scanner scanner) {
+        super(scanner);
+        rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 
-    public static void play(Scanner scanner) {
-        String userName = Engine.greeting(scanner);
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-
-        int number;
-        String userAnswer;
-        String correctAnswer;
-
-        for (int round = 0; round < 3; round++) {
-            number = (int) (Math.random() * 100);
-
-            System.out.println("Question: " + number);
-            System.out.print("Your answer: ");
-
-            userAnswer = scanner.next();
-            correctAnswer = getCorrectAnswer(number);
-
-            if (Engine.compareAnswers(userAnswer, correctAnswer, userName)) {
-                return;
-            }
-
-            System.out.println("Correct!");
-        }
-        System.out.println("Congratulations, " + userName + "!");
+    public void askQuestion() {
+        number = (int) (Math.random() * 100);
+        System.out.println("Question: " + number);
     }
+
+    public void getCorrectAnswer() {
+        correctAnswer = number % 2 == 0 ? "yes" : "no";
+    }
+
 }

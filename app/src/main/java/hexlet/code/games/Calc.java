@@ -1,50 +1,34 @@
 package hexlet.code.games;
 
+import hexlet.code.Game;
 import java.util.Scanner;
-import hexlet.code.Engine;
 
-public class Calc {
+public class Calc extends Game {
 
-    public static int getCorrectAnswer(int number1, int number2, String operation) {
-        return switch (operation) {
-            case "+" -> {
-                yield number1 + number2;
-            }
-            case "-" -> {
-                yield number1 - number2;
-            }
-            default -> {
-                yield number1 * number2;
-            }
+    public int number1;
+    public int number2;
+    public int indexOperation = 0;
+    public final String[] operations = {"+", "-", "*"};
+
+    public Calc(Scanner scanner) {
+        super(scanner);
+        rules = "What is the result of the expression?";
+    }
+
+    public void askQuestion() {
+        number1 = (int) (Math.random() * 10);
+        number2 = (int) (Math.random() * 10);
+        System.out.println("Question: " + number1 + " " + operations[indexOperation] + " " + number2);
+    }
+
+    public void getCorrectAnswer() {
+        int result = switch (indexOperation++) {
+            case 0 -> number1 + number2;
+            case 1 -> number1 - number2;
+            case 2 -> number1 * number2;
+            default -> 0;
         };
+        correctAnswer = Integer.toString(result);
     }
 
-    public static void play(Scanner scanner) {
-        String userName = Engine.greeting(scanner);
-        System.out.println("What is the result of the expression?");
-
-        int number1;
-        int number2;
-        int userAnswer;
-        int correctAnswer;
-        final String[] operations = {"+", "-", "*"};
-
-        for (int round = 0; round < 3; round++) {
-            number1 = (int) (Math.random() * 10) + 1;
-            number2 = (int) (Math.random() * 10) + 1;
-
-            System.out.println("Question: " + number1 + " " + operations[round] + " " + number2);
-            System.out.print("Your answer: ");
-
-            userAnswer = Integer.parseInt(scanner.next());
-            correctAnswer = getCorrectAnswer(number1, number2, operations[round]);
-
-            if (Engine.compareAnswers(userAnswer, correctAnswer, userName)) {
-                return;
-            }
-
-            System.out.println("Correct!");
-        }
-        System.out.println("Congratulations, " + userName + "!");
-    }
 }
