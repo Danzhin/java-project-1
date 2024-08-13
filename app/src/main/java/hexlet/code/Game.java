@@ -4,42 +4,42 @@ import java.util.Scanner;
 
 public abstract class Game {
 
-    public final int countRound = 3;
-    public String rules;
-    public String userName;
-    public String userAnswer;
-    public String correctAnswer;
-    public Scanner scanner;
+    protected final int countRound = 3;
+    protected String rules;
+    protected String userName;
+    protected String userAnswer;
+    protected String correctAnswer;
+    protected Scanner scanner;
 
-    public Game(Scanner scanner) {
+    protected Game(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void greeting() {
+    protected void greeting() {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
     }
 
-    public void printRules() {
+    protected void printRules() {
         System.out.println(rules);
     }
 
-    public void getAnswer() {
+    protected void getAnswer() {
         System.out.print("Your answer: ");
         userAnswer = scanner.next();
     }
 
-    public boolean compareAnswers() {
+    protected boolean compareAnswers() {
         return userAnswer.equals(correctAnswer);
     }
 
-    public abstract void askQuestion();
+    protected abstract void askQuestion();
 
-    public abstract void getCorrectAnswer();
+    protected abstract void getCorrectAnswer();
 
-    public void play() {
+    protected void play() {
         greeting();
         printRules();
         for (int i = 0; i < countRound; i++) {

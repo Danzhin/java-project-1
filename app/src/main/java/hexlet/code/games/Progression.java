@@ -5,15 +5,15 @@ import java.util.Scanner;
 
 public class Progression extends Game {
 
-    public int[]  progression = new int[5];
-    public int indexMissedNumber = 0;
+    private int[]  progression = new int[5];
+    private int indexMissedNumber = 0;
 
     public Progression(Scanner scanner) {
         super(scanner);
         rules = "What number is missing in the progression?";
     }
 
-    public void askQuestion() {
+    protected void askQuestion() {
         int number = (int) (Math.random() * 10) + 1;
         int step = (int) (Math.random() * 9) + 1;
         System.out.print("Question: ");
@@ -25,7 +25,7 @@ public class Progression extends Game {
         System.out.println();
     }
 
-    public void getCorrectAnswer() {
+    protected void getCorrectAnswer() {
         correctAnswer = Integer.toString(progression[indexMissedNumber]);
         indexMissedNumber += 2;
     }
