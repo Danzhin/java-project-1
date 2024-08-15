@@ -6,8 +6,6 @@ import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,16 +16,6 @@ public class Menu {
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
         return userName;
-    }
-
-    private static Map<String, Runnable> getStringRunnableMap(Scanner scanner) {
-        Map<String, Runnable> actions = new HashMap<>();
-        actions.put("2", () -> Even.play(greeting(scanner), scanner));
-        actions.put("3", () -> Calc.play(greeting(scanner), scanner));
-        actions.put("4", () -> GCD.play(greeting(scanner), scanner));
-        actions.put("5", () -> Progression.play(greeting(scanner), scanner));
-        actions.put("6", () -> Prime.play(greeting(scanner), scanner));
-        return actions;
     }
 
     public static void printMenu() {
@@ -48,17 +36,28 @@ public class Menu {
         String action = scanner.next();
         System.out.println();
 
-        Map<String, Runnable> actions = getStringRunnableMap(scanner);
-
         if (!action.equals("0")) {
-            Runnable selectedAction = actions.get(action);
-            if (selectedAction != null) {
-                selectedAction.run();
-            } else {
-                System.out.println("Invalid choice! Please select a valid option.");
+            String userName = greeting(scanner);
+            switch (action) {
+                case "2":
+                    Even.play(userName, scanner);
+                    break;
+                case "3":
+                    Calc.play(userName, scanner);
+                    break;
+                case "4":
+                    GCD.play(userName, scanner);
+                    break;
+                case "5":
+                    Progression.play(userName, scanner);
+                    break;
+                case "6":
+                    Prime.play(userName, scanner);
+                    break;
+                default:
+                    break;
             }
         }
-
         scanner.close();
     }
 
