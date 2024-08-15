@@ -12,6 +12,24 @@ import java.util.Scanner;
 
 public class Menu {
 
+    private static String greeting(Scanner scanner) {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
+        return userName;
+    }
+
+    private static Map<String, Runnable> getStringRunnableMap(Scanner scanner) {
+        Map<String, Runnable> actions = new HashMap<>();
+        actions.put("2", () -> Even.play(greeting(scanner), scanner));
+        actions.put("3", () -> Calc.play(greeting(scanner), scanner));
+        actions.put("4", () -> GCD.play(greeting(scanner), scanner));
+        actions.put("5", () -> Progression.play(greeting(scanner), scanner));
+        actions.put("6", () -> Prime.play(greeting(scanner), scanner));
+        return actions;
+    }
+
     public static void printMenu() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
@@ -21,26 +39,6 @@ public class Menu {
         System.out.println("5 - Progression");
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
-    }
-
-    public static String greeting(Scanner scanner) {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
-        return userName;
-    }
-
-    private static Map<String, Runnable> getStringRunnableMap(Scanner scanner) {
-        final int countRounds = 3;
-
-        Map<String, Runnable> actions = new HashMap<>();
-        actions.put("2", () -> Even.play(greeting(scanner), scanner, countRounds));
-        actions.put("3", () -> Calc.play(greeting(scanner), scanner, countRounds));
-        actions.put("4", () -> GCD.play(greeting(scanner), scanner, countRounds));
-        actions.put("5", () -> Progression.play(greeting(scanner), scanner, countRounds));
-        actions.put("6", () -> Prime.play(greeting(scanner), scanner, countRounds));
-        return actions;
     }
 
     public static void selectAction() {
@@ -64,8 +62,4 @@ public class Menu {
         scanner.close();
     }
 
-    public static void main(String[] args) {
-        printMenu();
-        selectAction();
-    }
 }
