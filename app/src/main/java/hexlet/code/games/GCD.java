@@ -8,6 +8,8 @@ public class GCD {
 
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
+    private static final int UPPER_LIMIT_NUMBER = 10;
+
     private static String createQuestion(int number1, int number2) {
         return "Question: " + number1 + " " + number2;
     }
@@ -28,8 +30,8 @@ public class GCD {
         int number1;
         int number2;
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
-            number1 = (int) (Math.random() * 10 + 2);
-            number2 = (int) (Math.random() * 10 + 2);
+            number1 = (int) (Math.random() * UPPER_LIMIT_NUMBER + 1);
+            number2 = (int) (Math.random() * UPPER_LIMIT_NUMBER + 1);
             questions[i] = createQuestion(number1, number2);
             correctAnswers[i] = createCorrectAnswer(number1, number2);
         }

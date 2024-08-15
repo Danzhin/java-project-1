@@ -9,6 +9,10 @@ public class Calc {
 
     private static final String RULES = "What is the result of the expression?";
 
+    private static final int UPPER_LIMIT_NUMBER1 = 20;
+
+    private static final int UPPER_LIMIT_NUMBER2 = 10;
+
     private static String createQuestion(int number1, int number2, String operation) {
         return "Question: " + number1 + " " + operation + " " + number2;
     }
@@ -30,8 +34,8 @@ public class Calc {
         final String[] operations = {"+", "-", "*"};
 
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
-            number1 = (int) (Math.random() * 20 + 1);
-            number2 = (int) (Math.random() * 10 + 1);
+            number1 = (int) (Math.random() * UPPER_LIMIT_NUMBER1 + 1);
+            number2 = (int) (Math.random() * UPPER_LIMIT_NUMBER2 + 1);
             questions[i] = createQuestion(number1, number2, operations[i % 3]);
             correctAnswers[i] = createCorrectAnswer(number1, number2, operations[i % 3]);
         }

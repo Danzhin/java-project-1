@@ -7,7 +7,12 @@ import java.util.Scanner;
 public class Progression {
 
     private static final String RULES = "What number is missing in the progression?";
+
     private static final int PROGRESSION_SIZE = 10;
+
+    private static final int UPPER_LIMIT_FIRST = 100;
+
+    private static final int UPPER_LIMIT_DIFFERENCE = 10;
 
     private static String createQuestion(int first, int difference, int indexMissedNumber) {
         StringBuilder question = new StringBuilder();
@@ -30,8 +35,8 @@ public class Progression {
         int difference;
         int indexMissedNumbe;
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
-            first = (int) (Math.random() * 10 + 1);
-            difference = (int) (Math.random() * 10 + 1);
+            first = (int) (Math.random() * UPPER_LIMIT_FIRST + 1);
+            difference = (int) (Math.random() * UPPER_LIMIT_DIFFERENCE + 1);
             indexMissedNumbe = (int) (Math.random() * PROGRESSION_SIZE);
             questions[i] = createQuestion(first, difference, indexMissedNumbe);
             correctAnswers[i] = createCorrectAnswer(first, difference, indexMissedNumbe);
