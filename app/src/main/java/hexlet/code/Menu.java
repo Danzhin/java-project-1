@@ -1,8 +1,12 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
-import static hexlet.code.games.Even.play;
+import java.util.Scanner;
 
 public class Menu {
 
@@ -25,6 +29,8 @@ public class Menu {
         return userName;
     }
 
+    public static final int countRounds = 3;
+
     public static void selectAction() {
         Scanner scanner = new Scanner(System.in);
 
@@ -32,13 +38,26 @@ public class Menu {
         String action = scanner.next();
         System.out.println();
 
+        final int countRounds = 3;
         if (!action.equals("0")) {
             String userName = greeting(scanner);
             switch (action) {
-                case "1":
-                    break;
                 case "2":
-                    play(userName, scanner);
+                    Even.play(userName, scanner, countRounds);
+                    break;
+                case "3":
+                    Calc.play(userName, scanner, countRounds);
+                    break;
+                case "4":
+                    GCD.play(userName, scanner, countRounds);
+                    break;
+                case "5":
+                    Progression.play(userName, scanner, countRounds);
+                    break;
+                case "6":
+                    Prime.play(userName, scanner, countRounds);
+                    break;
+                default:
                     break;
             }
         }

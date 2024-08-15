@@ -13,26 +13,26 @@ public class Engine {
         return userAnswer.equals(correctAnswer);
     }
 
-    public static void startEngine(GameData gameData, Scanner scanner) {
-        System.out.println(gameData.rules);
+    public static void startGame(String userName, GameData gameData, Scanner scanner) {
+        System.out.println(gameData.rules());
 
         String userAnswer;
         String correctAnswer;
 
-        for (int i = 0; i < gameData.countRound; i++) {
-            System.out.println(gameData.questions[i]);
+        for (int i = 0; i < gameData.countRound(); i++) {
+            System.out.println(gameData.questions()[i]);
 
             userAnswer = getUserAnswer(scanner);
-            correctAnswer = gameData.correctAnswers[i];
+            correctAnswer = gameData.correctAnswers()[i];
 
             if (!compareAnswers(userAnswer, correctAnswer)) {
                 System.out.println("'" + userAnswer + "' is wrong answer. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + gameData.userName + "!");
+                System.out.println("Let's try again, " + userName + "!");
                 return;
             }
             System.out.println("Correct!");
         }
-        System.out.println("Congratulations, " + gameData.userName + "!");
+        System.out.println("Congratulations, " + userName + "!");
     }
 
 }
