@@ -33,13 +33,13 @@ public class Progression {
 
         int first;
         int difference;
-        int indexMissedNumbe;
+        int indexMissedNumber;
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
             first = (int) (Math.random() * UPPER_LIMIT_FIRST + 1);
             difference = (int) (Math.random() * UPPER_LIMIT_DIFFERENCE + 1);
-            indexMissedNumbe = (int) (Math.random() * PROGRESSION_SIZE);
-            questions[i] = createQuestion(first, difference, indexMissedNumbe);
-            correctAnswers[i] = createCorrectAnswer(first, difference, indexMissedNumbe);
+            indexMissedNumber = (int) (Math.random() * PROGRESSION_SIZE);
+            questions[i] = createQuestion(first, difference, indexMissedNumber);
+            correctAnswers[i] = createCorrectAnswer(first, difference, indexMissedNumber);
         }
         return new GameData(RULES, questions, correctAnswers);
     }
