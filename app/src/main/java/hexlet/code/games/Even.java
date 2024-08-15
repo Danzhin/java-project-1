@@ -1,24 +1,37 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
+import static hexlet.code.Engine.startEngine;
+import hexlet.code.GameData;
+
 import java.util.Scanner;
 
-public class Even extends Game {
+public class Even {
 
-    private int number;
-
-    public Even(Scanner scanner) {
-        super(scanner);
-        rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static String createQuestion(int number) {
+        return "Question: " + Integer.toString(number);
     }
 
-    protected void askQuestion() {
-        number = (int) (Math.random() * 100);
-        System.out.println("Question: " + number);
+    private static String createCorrectAnswer(int number) {
+        return number % 2 == 0 ? "yes" : "no";
     }
 
-    protected void getCorrectAnswer() {
-        correctAnswer = number % 2 == 0 ? "yes" : "no";
+    private static GameData createGameData(String userName, String rules) {
+        GameData gameData = new GameData(userName, rules);
+
+        int number;
+        for (int i = 0; i < gameData.countRound; i++) {
+            number = (int) (Math.random() * 10);
+            gameData.questions[i] = createQuestion(number);
+            gameData.correctAnswers[i] = createCorrectAnswer(number);
+        }
+
+        return gameData;
+    }
+
+    public static void play(String userName, Scanner scanner) {
+        String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        GameData gameData = createGameData(userName, rules);
+        startEngine(gameData, scanner);
     }
 
 }
