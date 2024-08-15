@@ -11,6 +11,7 @@ public class Progression {
 
     private static String createQuestion(int first, int difference, int indexMissedNumber) {
         StringBuilder question = new StringBuilder();
+        question.append("Question: ");
         for (int i = 0; i < PROGRESSION_SIZE; i++) {
             question.append(i == indexMissedNumber ? ".. " : first + i * difference  + " ");
         }
