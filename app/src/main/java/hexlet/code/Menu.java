@@ -10,14 +10,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static String greeting(Scanner scanner) {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
-        return userName;
-    }
-
     public static void printMenu() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
@@ -29,6 +21,14 @@ public class Menu {
         System.out.println("0 - Exit");
     }
 
+    private static String greeting(Scanner scanner) {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
+        return userName;
+    }
+
     public static void selectAction() {
         Scanner scanner = new Scanner(System.in);
 
@@ -38,27 +38,31 @@ public class Menu {
 
         if (!action.equals("0")) {
             String userName = greeting(scanner);
-            switch (action) {
-                case "2":
-                    Even.play(userName, scanner);
-                    break;
-                case "3":
-                    Calc.play(userName, scanner);
-                    break;
-                case "4":
-                    GCD.play(userName, scanner);
-                    break;
-                case "5":
-                    Progression.play(userName, scanner);
-                    break;
-                case "6":
-                    Prime.play(userName, scanner);
-                    break;
-                default:
-                    break;
-            }
+            selectGame(action, userName, scanner);
         }
         scanner.close();
     }
 
+    private static void selectGame(String action, String userName, Scanner scanner) {
+        switch (action) {
+            case "2":
+                Even.play(userName, scanner);
+                break;
+            case "3":
+                Calc.play(userName, scanner);
+                break;
+            case "4":
+                GCD.play(userName, scanner);
+                break;
+            case "5":
+                Progression.play(userName, scanner);
+                break;
+            case "6":
+                Prime.play(userName, scanner);
+                break;
+            default:
+                break;
+        }
+    }
+    
 }
