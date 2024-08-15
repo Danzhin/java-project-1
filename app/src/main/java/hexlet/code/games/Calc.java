@@ -13,6 +13,8 @@ public class Calc {
 
     private static final int UPPER_LIMIT_NUMBER2 = 10;
 
+    private static final int COUNT_UNIQUE_OPERATIONS = 3;
+
     private static String createQuestion(int number1, int number2, String operation) {
         return "Question: " + number1 + " " + operation + " " + number2;
     }
@@ -36,8 +38,8 @@ public class Calc {
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
             number1 = (int) (Math.random() * UPPER_LIMIT_NUMBER1 + 1);
             number2 = (int) (Math.random() * UPPER_LIMIT_NUMBER2 + 1);
-            questions[i] = createQuestion(number1, number2, operations[i % 3]);
-            correctAnswers[i] = createCorrectAnswer(number1, number2, operations[i % 3]);
+            questions[i] = createQuestion(number1, number2, operations[i % COUNT_UNIQUE_OPERATIONS]);
+            correctAnswers[i] = createCorrectAnswer(number1, number2, operations[i % COUNT_UNIQUE_OPERATIONS]);
         }
 
         return new GameData(RULES, questions, correctAnswers);
