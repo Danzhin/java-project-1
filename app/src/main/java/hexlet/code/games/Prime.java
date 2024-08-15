@@ -10,6 +10,8 @@ public class Prime {
 
     private static final int UPPER_LIMIT_NUMBER = 50;
 
+    private static final int LOWER_LIMIT_NUMBER = 2;
+
     private static String createQuestion(int number) {
         return "Question: " + number;
     }
@@ -29,7 +31,7 @@ public class Prime {
 
         int number;
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
-            number = (int) (Math.random() * UPPER_LIMIT_NUMBER + 1);
+            number = (int) (Math.random() * UPPER_LIMIT_NUMBER + LOWER_LIMIT_NUMBER);
             questions[i] = createQuestion(number);
             correctAnswers[i] = createCorrectAnswer(number);
         }
