@@ -6,6 +6,8 @@ import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
@@ -29,7 +31,17 @@ public class Menu {
         return userName;
     }
 
-    public static final int countRounds = 3;
+    private static Map<String, Runnable> getStringRunnableMap(Scanner scanner) {
+        final int countRounds = 3;
+
+        Map<String, Runnable> actions = new HashMap<>();
+        actions.put("2", () -> Even.play(greeting(scanner), scanner, countRounds));
+        actions.put("3", () -> Calc.play(greeting(scanner), scanner, countRounds));
+        actions.put("4", () -> GCD.play(greeting(scanner), scanner, countRounds));
+        actions.put("5", () -> Progression.play(greeting(scanner), scanner, countRounds));
+        actions.put("6", () -> Prime.play(greeting(scanner), scanner, countRounds));
+        return actions;
+    }
 
     public static void selectAction() {
         Scanner scanner = new Scanner(System.in);
@@ -38,30 +50,22 @@ public class Menu {
         String action = scanner.next();
         System.out.println();
 
-        final int countRounds = 3;
+        Map<String, Runnable> actions = getStringRunnableMap(scanner);
+
         if (!action.equals("0")) {
-            String userName = greeting(scanner);
-            switch (action) {
-                case "2":
-                    Even.play(userName, scanner, countRounds);
-                    break;
-                case "3":
-                    Calc.play(userName, scanner, countRounds);
-                    break;
-                case "4":
-                    GCD.play(userName, scanner, countRounds);
-                    break;
-                case "5":
-                    Progression.play(userName, scanner, countRounds);
-                    break;
-                case "6":
-                    Prime.play(userName, scanner, countRounds);
-                    break;
-                default:
-                    break;
+            Runnable selectedAction = actions.get(action);
+            if (selectedAction != null) {
+                selectedAction.run();
+            } else {
+                System.out.println("Invalid choice! Please select a valid option.");
             }
         }
 
         scanner.close();
+    }
+
+    public static void main(String[] args) {
+        printMenu();
+        selectAction();
     }
 }

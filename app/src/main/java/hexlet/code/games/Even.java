@@ -8,14 +8,14 @@ import static hexlet.code.Engine.startGame;
 public class Even {
 
     private static String createQuestion(int number) {
-        return "Question: " + Integer.toString(number);
+        return "Question: " + number;
     }
 
     private static String createCorrectAnswer(int number) {
         return number % 2 == 0 ? "yes" : "no";
     }
 
-    private static GameData createGameData(int countRounds) {;
+    private static GameData createGameData(int countRounds) {
         String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         String[] questions = new String[countRounds];
         String[] correctAnswers = new String[countRounds];

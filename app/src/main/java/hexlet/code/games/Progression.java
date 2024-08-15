@@ -32,8 +32,8 @@ public class Progression {
         String[] correctAnswers = new String[countRounds];
 
         int size = 5;
-        int[]  progression = createProgression(size);
         int indexMissedNumber = 0;
+        int[]  progression = createProgression(size);
         for (int i = 0; i < countRounds; i++) {
             questions[i] = createQuestion(progression, indexMissedNumber);
             correctAnswers[i] = Integer.toString(progression[indexMissedNumber]);
