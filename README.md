@@ -18,3 +18,8 @@
 - Определение простого числа: проверка, является ли число простым.
 
 [![asciicast](https://asciinema.org/a/9yYD5utf2gmbyuLCD0m736sWh.svg)](https://asciinema.org/a/9yYD5utf2gmbyuLCD0m736sWh)
+
+### Запуск
+- скачайте проект 
+- откройте в терминале папку app 
+- введите команду make run-dist
