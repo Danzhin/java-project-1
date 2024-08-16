@@ -31,11 +31,9 @@ public class Calc {
         String[] questions = new String[Engine.COUNT_ROUNDS];
         String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
 
-
         int number1;
         int number2;
         final String[] operations = {"+", "-", "*"};
-
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
             number1 = (int) (Math.random() * UPPER_LIMIT_NUMBER1 + 1);
             number2 = (int) (Math.random() * UPPER_LIMIT_NUMBER2 + 1);

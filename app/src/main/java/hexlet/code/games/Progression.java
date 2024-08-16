@@ -27,10 +27,7 @@ public class Progression {
         return Integer.toString(first + difference * indexMissedNumber);
     }
 
-    private static GameData createGameData() {
-        String[] questions = new String[Engine.COUNT_ROUNDS];
-        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
-
+    private static GameData createGameData(String[] questions, String[] correctAnswers) {
         int first;
         int difference;
         int indexMissedNumber;
@@ -45,7 +42,7 @@ public class Progression {
     }
 
     public static void play(String userName, Scanner scanner) {
-        GameData gameData = createGameData();
+        GameData gameData = createGameData(new String[Engine.COUNT_ROUNDS], new String[Engine.COUNT_ROUNDS]);
         Engine.startGame(userName, gameData, scanner);
     }
 
