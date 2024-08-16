@@ -31,6 +31,7 @@ public class Calc {
         String[] questions = new String[Engine.COUNT_ROUNDS];
         String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
 
+
         int number1;
         int number2;
         final String[] operations = {"+", "-", "*"};
