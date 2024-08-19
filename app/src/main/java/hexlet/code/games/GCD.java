@@ -23,7 +23,10 @@ public class GCD {
         return Integer.toString(number1);
     }
 
-    private static GameData createGameData(String[] questions, String[] correctAnswers) {
+    private static GameData createGameData() {
+        String[] questions = new String[Engine.COUNT_ROUNDS];
+        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
+
         int number1;
         int number2;
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
@@ -37,7 +40,7 @@ public class GCD {
     }
 
     public static void play(String userName, Scanner scanner) {
-        GameData gameData = createGameData(new String[Engine.COUNT_ROUNDS], new String[Engine.COUNT_ROUNDS]);
+        GameData gameData = createGameData();
         Engine.startGame(userName, gameData, scanner);
     }
 

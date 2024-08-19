@@ -18,7 +18,10 @@ public class Even {
         return number % 2 == 0 ? "yes" : "no";
     }
 
-    private static GameData createGameData(String[] questions, String[] correctAnswers) {
+    private static GameData createGameData() {
+        String[] questions = new String[Engine.COUNT_ROUNDS];
+        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
+
         int number;
         for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
             number = (int) (Math.random() * UPPER_LIMIT_NUMBER + 1);
@@ -30,7 +33,7 @@ public class Even {
     }
 
     public static void play(String userName, Scanner scanner) {
-        GameData gameData = createGameData(new String[Engine.COUNT_ROUNDS], new String[Engine.COUNT_ROUNDS]);
+        GameData gameData = createGameData();
         Engine.startGame(userName, gameData, scanner);
     }
 
