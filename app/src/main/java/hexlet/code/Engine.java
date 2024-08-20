@@ -12,7 +12,7 @@ public class Engine {
         String userAnswer;
         String correctAnswer;
 
-        for (int i = 0; i < COUNT_ROUNDS; i++) {
+        for (int i = 0; i < gameData.countRounds(); i++) {
             System.out.println(gameData.questions()[i]);
 
             System.out.print("Your answer: ");
@@ -24,9 +24,11 @@ public class Engine {
                 System.out.println("Let's try again, " + userName + "!");
                 return;
             }
+
             System.out.println("Correct!");
 
         }
+
         System.out.println("Congratulations, " + userName + "!");
 
     }

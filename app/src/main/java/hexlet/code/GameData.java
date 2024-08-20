@@ -1,4 +1,4 @@
 package hexlet.code;
 
-public record GameData(String rules, String[] questions, String[] correctAnswers) {     }
+public record GameData(String rules, int countRounds, String[] questions, String[] correctAnswers) {     }
 

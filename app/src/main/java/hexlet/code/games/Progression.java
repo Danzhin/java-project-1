@@ -1,47 +1,56 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
 import hexlet.code.GameData;
+import hexlet.code.Engine;
+import hexlet.code.Utils;
 import java.util.Scanner;
 
 public class Progression {
 
     private static final String RULES = "What number is missing in the progression?";
 
+    private static final int COUNT_ROUNDS = Engine.COUNT_ROUNDS;
+
     private static final int PROGRESSION_SIZE = 10;
 
-    private static final int UPPER_LIMIT_FIRST = 100;
+    private static final int MIN_FIRST = 10;
+    private static final int MAX_FIRST = 50;
 
-    private static final int UPPER_LIMIT_DIFFERENCE = 10;
+    private static final int MIN_DIFFERENCE = 3;
+    private static final int MAX_DIFFERENCE = 9;
 
-    private static String createQuestion(int first, int difference, int indexMissedNumber) {
+    private static int findMissingNumber(int[] progression, int indexMissedNumber) {
+        return progression[indexMissedNumber];
+    }
+
+    private static String createQuestion(int[] progression, int indexMissedNumber) {
         StringBuilder question = new StringBuilder();
         question.append("Question: ");
         for (int i = 0; i < PROGRESSION_SIZE; i++) {
-            question.append(i == indexMissedNumber ? ".. " : first + i * difference  + " ");
+            question.append(i == indexMissedNumber ? ".. " : progression[i]  + " ");
         }
         return question.toString();
     }
 
-    private static String createCorrectAnswer(int first, int difference, int indexMissedNumber) {
-        return Integer.toString(first + difference * indexMissedNumber);
+    private static String getCorrectAnswer(int[] progression, int indexMissedNumber) {
+        return Integer.toString(findMissingNumber(progression, indexMissedNumber));
     }
 
     private static GameData createGameData() {
-        String[] questions = new String[Engine.COUNT_ROUNDS];
-        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
+        String[] questions = new String[COUNT_ROUNDS];
+        String[] correctAnswers = new String[COUNT_ROUNDS];
+        final int[] indexesMissingNumbers = {2, 5, 8};
 
-        int first;
-        int difference;
-        int indexMissedNumber;
-        for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
-            first = (int) (Math.random() * UPPER_LIMIT_FIRST + 1);
-            difference = (int) (Math.random() * UPPER_LIMIT_DIFFERENCE + 1);
-            indexMissedNumber = (int) (Math.random() * PROGRESSION_SIZE);
-            questions[i] = createQuestion(first, difference, indexMissedNumber);
-            correctAnswers[i] = createCorrectAnswer(first, difference, indexMissedNumber);
+        for (int i = 0; i < COUNT_ROUNDS; i++) {
+            int first = Utils.createRandomNumber(MIN_FIRST, MAX_FIRST);
+            int difference = Utils.createRandomNumber(MIN_DIFFERENCE, MAX_DIFFERENCE);
+            int[] progression = Utils.createProgression(PROGRESSION_SIZE, first, difference);
+
+            questions[i] = createQuestion(progression, indexesMissingNumbers[i % COUNT_ROUNDS]);
+            correctAnswers[i] = getCorrectAnswer(progression, indexesMissingNumbers[i % COUNT_ROUNDS]);
         }
-        return new GameData(RULES, questions, correctAnswers);
+
+        return new GameData(RULES, COUNT_ROUNDS, questions, correctAnswers);
     }
 
     public static void play(String userName, Scanner scanner) {

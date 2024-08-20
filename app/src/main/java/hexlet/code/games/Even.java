@@ -1,35 +1,43 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
+import hexlet.code.Utils;
 import hexlet.code.GameData;
+import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Even {
 
     private static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    private static final int UPPER_LIMIT_NUMBER = 100;
+    private static final int COUNT_ROUNDS = Engine.COUNT_ROUNDS;
+
+    private static final int MIN_NUMBER = 10;
+    private static final int MAX_NUMBER = 100;
+
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
 
     private static String createQuestion(int number) {
         return "Question: " + number;
     }
 
-    private static String createCorrectAnswer(int number) {
-        return number % 2 == 0 ? "yes" : "no";
+    private static String getCorrectAnswer(int number) {
+        return isEven(number) ? "yes" : "no";
     }
 
     private static GameData createGameData() {
-        String[] questions = new String[Engine.COUNT_ROUNDS];
-        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
+        String[] questions = new String[COUNT_ROUNDS];
+        String[] correctAnswers = new String[COUNT_ROUNDS];
 
-        int number;
-        for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
-            number = (int) (Math.random() * UPPER_LIMIT_NUMBER + 1);
+        for (int i = 0; i < COUNT_ROUNDS; i++) {
+            int number = Utils.createRandomNumber(MIN_NUMBER, MAX_NUMBER);
+
             questions[i] = createQuestion(number);
-            correctAnswers[i] = createCorrectAnswer(number);
+            correctAnswers[i] = getCorrectAnswer(number);
         }
 
-        return new GameData(RULES, questions, correctAnswers);
+        return new GameData(RULES, COUNT_ROUNDS, questions, correctAnswers);
     }
 
     public static void play(String userName, Scanner scanner) {
