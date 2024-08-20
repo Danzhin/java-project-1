@@ -34,7 +34,7 @@ public class Calc {
     private static GameData createGameData() {
         String[] questions = new String[COUNT_ROUNDS];
         String[] correctAnswers = new String[COUNT_ROUNDS];
-        final String[] operations = {"+", "-", "*"};
+        final String[] operations = {"+", "-", "+"};
 
         for (int i = 0; i < COUNT_ROUNDS; i++) {
             int number1 = Utils.createRandomNumber(MIN_NUMBER, MAX_NUMBER);
