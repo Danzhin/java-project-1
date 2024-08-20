@@ -39,15 +39,15 @@ public class Progression {
     private static GameData createGameData() {
         String[] questions = new String[COUNT_ROUNDS];
         String[] correctAnswers = new String[COUNT_ROUNDS];
-        final int[] indexesMissingNumbers = {2, 5, 8};
+        final int[] indexesMissingNumbers = {2, 8, 5};
 
         for (int i = 0; i < COUNT_ROUNDS; i++) {
             int first = Utils.createRandomNumber(MIN_FIRST, MAX_FIRST);
             int difference = Utils.createRandomNumber(MIN_DIFFERENCE, MAX_DIFFERENCE);
             int[] progression = Utils.createProgression(PROGRESSION_SIZE, first, difference);
 
-            questions[i] = createQuestion(progression, indexesMissingNumbers[i % COUNT_ROUNDS]);
-            correctAnswers[i] = getCorrectAnswer(progression, indexesMissingNumbers[i % COUNT_ROUNDS]);
+            questions[i] = createQuestion(progression, indexesMissingNumbers[i % indexesMissingNumbers.length]);
+            correctAnswers[i] = getCorrectAnswer(progression, indexesMissingNumbers[i % indexesMissingNumbers.length]);
         }
 
         return new GameData(RULES, COUNT_ROUNDS, questions, correctAnswers);

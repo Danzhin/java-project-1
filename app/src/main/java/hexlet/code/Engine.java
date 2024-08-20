@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
 
-    public static final int COUNT_ROUNDS = 3;
+    public static final int COUNT_ROUNDS = 4;
 
     public static void startGame(String userName, GameData gameData, Scanner scanner) {
         System.out.println(gameData.rules());

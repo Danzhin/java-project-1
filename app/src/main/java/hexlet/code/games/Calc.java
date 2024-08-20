@@ -40,8 +40,8 @@ public class Calc {
             int number1 = Utils.createRandomNumber(MIN_NUMBER, MAX_NUMBER);
             int number2 = Utils.createRandomNumber(MIN_NUMBER, MAX_NUMBER);
 
-            questions[i] = createQuestion(number1, number2, operations[i % COUNT_ROUNDS]);
-            correctAnswers[i] = getCorrectAnswer(number1, number2, operations[i % COUNT_ROUNDS]);
+            questions[i] = createQuestion(number1, number2, operations[i % operations.length]);
+            correctAnswers[i] = getCorrectAnswer(number1, number2, operations[i % operations.length]);
         }
 
         return new GameData(RULES, COUNT_ROUNDS, questions, correctAnswers);
