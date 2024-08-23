@@ -9,8 +9,6 @@ public class GCD {
 
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
-    private static final int COUNT_ROUNDS = Engine.COUNT_ROUNDS;
-
     private static final int MIN_NUMBER = 10;
     private static final int UPPER_LIMIT_NUMBER = 50;
 
@@ -32,10 +30,10 @@ public class GCD {
     }
 
     private static GameData createGameData() {
-        String[] questions = new String[COUNT_ROUNDS];
-        String[] correctAnswers = new String[COUNT_ROUNDS];
+        String[] questions = new String[Engine.COUNT_ROUNDS];
+        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
 
-        for (int i = 0; i < COUNT_ROUNDS; i++) {
+        for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
             int number1 = Utils.createRandomNumber(MIN_NUMBER, UPPER_LIMIT_NUMBER);
             int number2 = Utils.createRandomNumber(MIN_NUMBER, UPPER_LIMIT_NUMBER);
 
@@ -43,7 +41,7 @@ public class GCD {
             correctAnswers[i] = getCorrectAnswer(number1, number2);
         }
 
-        return new GameData(RULES, COUNT_ROUNDS, questions, correctAnswers);
+        return new GameData(RULES, Engine.COUNT_ROUNDS, questions, correctAnswers);
     }
 
     public static void play(String userName, Scanner scanner) {

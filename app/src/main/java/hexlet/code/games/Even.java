@@ -8,9 +8,6 @@ import java.util.Scanner;
 public class Even {
 
     private static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-
-    private static final int COUNT_ROUNDS = Engine.COUNT_ROUNDS;
-
     private static final int MIN_NUMBER = 10;
     private static final int MAX_NUMBER = 100;
 
@@ -27,17 +24,17 @@ public class Even {
     }
 
     private static GameData createGameData() {
-        String[] questions = new String[COUNT_ROUNDS];
-        String[] correctAnswers = new String[COUNT_ROUNDS];
+        String[] questions = new String[Engine.COUNT_ROUNDS];
+        String[] correctAnswers = new String[Engine.COUNT_ROUNDS];
 
-        for (int i = 0; i < COUNT_ROUNDS; i++) {
+        for (int i = 0; i < Engine.COUNT_ROUNDS; i++) {
             int number = Utils.createRandomNumber(MIN_NUMBER, MAX_NUMBER);
 
             questions[i] = createQuestion(number);
             correctAnswers[i] = getCorrectAnswer(number);
         }
 
-        return new GameData(RULES, COUNT_ROUNDS, questions, correctAnswers);
+        return new GameData(RULES, Engine.COUNT_ROUNDS, questions, correctAnswers);
     }
 
     public static void play(String userName, Scanner scanner) {
