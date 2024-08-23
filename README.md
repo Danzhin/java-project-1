@@ -1,6 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Danzhin/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Danzhin/java-project-61/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/12bcdbb325a06b79c424/maintainability)](https://codeclimate.com/github/Danzhin/java-project-1/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2e1074c0fd7ccf8871b0/maintainability)](https://codeclimate.com/github/Danzhin/java-project-61-1/maintainability)
 ### Описание
 «Игры разума» — набор из пяти консольных игр, построенных по принципу популярных мобильных приложений для прокачки мозга. Каждая игра задает вопросы, на которые нужно дать правильные ответы. После трех правильных ответов считается, что игра пройдена. Неправильные ответы завершают игру и предлагают пройти ее заново. Игры:
 - Определение четного числа: проверка, является ли число четным.
